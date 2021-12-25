@@ -2,6 +2,8 @@ version: "3"
 services:
   db:
     image: mysql:latest
+    volumes:
+      - ./initdb.d:/docker-entrypoint-initdb.d
     ports:
       - "3307:3306"
     environment:
