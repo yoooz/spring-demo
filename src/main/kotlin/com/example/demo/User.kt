@@ -7,7 +7,7 @@ import javax.persistence.Id
 
 
 @Entity
-class UserEntity {
+class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Int = 0

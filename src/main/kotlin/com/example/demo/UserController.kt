@@ -9,21 +9,21 @@ import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
 @RequestMapping(path = ["/userentity"])
-class UserEntityController {
+class UserController {
     @Autowired
-    lateinit var userEntityRepository: UserEntityRepository
+    lateinit var userRepository: UserRepository
 
     @GetMapping(path = ["/add"])
     @ResponseBody fun addNewUser(@RequestParam name: String, @RequestParam email: String): String {
-        val entity = UserEntity()
+        val entity = User()
         entity.name = name
         entity.email = email
-        userEntityRepository.save(entity)
+        userRepository.save(entity)
         return "Saved"
     }
 
     @GetMapping(path = ["/all"])
-    @ResponseBody fun getAllUserEntities(): Iterable<UserEntity> {
-        return userEntityRepository.findAll()
+    @ResponseBody fun getAllUserEntities(): Iterable<User> {
+        return userRepository.findAll()
     }
 }
