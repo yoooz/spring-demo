@@ -14,7 +14,11 @@ class UserController {
     lateinit var userRepository: UserRepository
 
     @GetMapping(path = ["/add"])
-    @ResponseBody fun addNewUser(@RequestParam name: String, @RequestParam email: String): String {
+    @ResponseBody fun addNewUser(
+        @RequestParam name: String,
+        @RequestParam email: String,
+        @RequestParam ds: String?
+    ): String {
         val entity = User()
         entity.name = name
         entity.email = email
@@ -23,7 +27,9 @@ class UserController {
     }
 
     @GetMapping(path = ["/all"])
-    @ResponseBody fun getAllUserEntities(): Iterable<User> {
+    @ResponseBody fun getAllUserEntities(
+        @RequestParam ds: String?
+    ): Iterable<User> {
         return userRepository.findAll()
     }
 }
