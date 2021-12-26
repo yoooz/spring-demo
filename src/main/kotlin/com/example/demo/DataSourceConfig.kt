@@ -26,9 +26,9 @@ class DataSourceConfig {
     @Bean
     fun firstDataSource(): HikariDataSource {
         val config = HikariConfig()
-        config.jdbcUrl = "jdbc:mysql://127.0.0.1:3307/db_example_1"
-        config.username = "db_example_1"
-        config.password = "db_example_1"
+        config.jdbcUrl = "jdbc:mysql://127.0.0.1:3307/db_1"
+        config.username = "db_1"
+        config.password = "db_1"
 
         return HikariDataSource(config)
     }
@@ -36,9 +36,9 @@ class DataSourceConfig {
     @Bean
     fun secondDataSource(): HikariDataSource {
         val config = HikariConfig()
-        config.jdbcUrl = "jdbc:mysql://127.0.0.1:3307/db_example_2"
-        config.username = "db_example_2"
-        config.password = "db_example_2"
+        config.jdbcUrl = "jdbc:mysql://127.0.0.1:3307/db_2"
+        config.username = "db_2"
+        config.password = "db_2"
 
         return HikariDataSource(config)
     }
@@ -49,8 +49,8 @@ class DataSourceConfig {
         val resolver = DynamicRoutingDataSourceResolver()
 
         val dataSources: Map<Any, Any> = mapOf(
-            Pair("db_example_1", firstDataSource()),
-            Pair("db_example_2", secondDataSource())
+            Pair("db_1", firstDataSource()),
+            Pair("db_2", secondDataSource())
         )
 
         resolver.setTargetDataSources(dataSources)

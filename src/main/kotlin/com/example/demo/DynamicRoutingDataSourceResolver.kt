@@ -6,9 +6,9 @@ class DynamicRoutingDataSourceResolver: AbstractRoutingDataSource() {
 
     override fun determineCurrentLookupKey(): Any? {
         return if (DataSourceContextHolder.getDataSourceType() == DataSource.DataSourceType.STG) {
-            "db_example_1"
+            "db_1"
         } else {
-            "db_example_2"
+            "db_2"
         }
     }
 }
