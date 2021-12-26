@@ -2,14 +2,14 @@ package com.example.demo
 
 object DataSourceContextHolder {
 
-    private val contextHolder = ThreadLocal<DataSource.DataSourceType>()
+    private val contextHolder = ThreadLocal<String>()
 
-    fun setDataSourceType(type: DataSource.DataSourceType) {
-        contextHolder.set(type)
+    fun setDataSourceType(dbName: String) {
+        contextHolder.set(dbName)
     }
 
-    fun getDataSourceType(): DataSource.DataSourceType {
-        return contextHolder.get() ?: DataSource.DataSourceType.STG
+    fun getDataSourceType(): String {
+        return contextHolder.get() ?: ""
     }
 
     fun clear() {
